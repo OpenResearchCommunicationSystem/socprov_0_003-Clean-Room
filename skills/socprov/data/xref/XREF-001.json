@@ -1,0 +1,14 @@
+{
+  "source_id": "001",
+  "short_title": "Example Announcement",
+  "intake_type": "URL",
+  "traditional_citation": "(U) | Source Type: Website | Site Name: example.com | Page Title: Example Title | Date of Publication: 2026-11-09 | URL: https://example.com/example | Date of Access: 2026-11-09 | Source Descriptor: Public webpage.",
+  "excerpts": [
+    {
+      "quote_id": "01",
+      "text": "The program was announced on 9 November 2026.",
+      "translation": null
+    }
+  ],
+  "not_used": false
+}

@@ -1,0 +1,5 @@
+SOCProv 0.003 locked reference
+Created: 2026-11-09
+This folder contains the clean-room system only.
+No 0.002 case data was copied.
+Do not write case objects here. Use a working copy for research.

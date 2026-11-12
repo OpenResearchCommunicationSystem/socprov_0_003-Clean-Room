@@ -1,0 +1,76 @@
+SOCProv 0.003 — Object Shapes
+
+Plain-text definitions. No executable code. Write-once JSON files inside the skill tree.
+
+BLOCK (draft-owned narrative marker; not a JSON object)
+Declared in the locked draft at the end of a Markdown heading:
+  ## Heading Title {#BLOCK-001}
+Form-print creates a local bookmark BLOCK-001 and suppresses the marker from the visible heading.
+BLOCK identifiers are not stored in any JSON object.
+They exist only so CLAIM and INDX can return to the narrative location that used them.
+
+XREF (System Storage Source of Truth for excerpt text)
+File: data/xref/XREF-<SOURCE ID>.json
+Required fields:
+- source_id: string
+- short_title: string
+- intake_type: string (URL | API | paste | file)
+- traditional_citation: string
+- excerpts: array of objects
+  - quote_id: string
+  - text: string (original language)
+  - translation: string or null
+- not_used: boolean (default false)
+
+QUOTE is the atomic unit XREF-<SOURCE ID>-<QUOTE ID>.
+QUOTE text and translation live only in the XREF excerpts array.
+CLAIM and INDX may display the quote text; the link always resolves to the XREF entry.
+
+CLAIM
+File: data/claim/CLAIM-<id>.json
+Required fields:
+- claim_id: string
+- short_title: string
+- specific_claim: string
+  Wording rule: most important entity first, connection next, attribution last.
+  Never open with "According to…".
+- specific_context: string
+- logic: string
+- sources: array of XREF-<SOURCE ID>-<QUOTE ID>
+- not_used: boolean (default false)
+
+INDX
+File: data/indx/INDX-<id>.json
+Required fields:
+- indx_id: string
+- short_title: string (unique)
+- normalized_long: string
+- normalized_short: string
+- search_terms: array of strings
+- index_to: array of strings
+- properties: optional array
+    - label: string
+    - value: string (may contain [[INDX-<id>|Display]] and [[CLAIM-<id>]] WikiLinks)
+    - sources: array of XREF-<SOURCE ID>-<QUOTE ID>
+    - claims: array of CLAIM-<id>
+- not_used: boolean (default false)
+
+PROV (preservation of what the system held; not internet provenance)
+File: data/prov/PROV-<SOURCE ID>.json
+Required fields:
+- source_id: string (matches XREF)
+- hash: string (SHA-256)
+- raw_path: string (relative under attachments/)
+- include_in_packet: boolean
+- full_document_translation: string or null
+- not_used: boolean (default false)
+
+PROV proves what the system held at the time of the pull
+(user paste, user upload, API return, or web scrape).
+It does not prove that an internet source still exists or is unaltered.
+Raw text is never modified, annotated, or WikiLinked.
+
+Origin tags (optional on lightweight fields)
+- origin: "LLM" | "USER" | "DET"
+
+Form-print renders each property as label: value, followed by local links to the listed sources and claims when those identifiers are valid.

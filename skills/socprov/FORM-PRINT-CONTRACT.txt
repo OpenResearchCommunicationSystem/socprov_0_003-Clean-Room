@@ -1,0 +1,28 @@
+SOCProv 0.003 — Form-Print Contract
+
+The form-print process is deterministic assembly.
+It does not synthesize, rewrite, summarize, or reorder.
+
+Inputs
+- A locked Markdown draft that may contain {#BLOCK-###} markers and WikiLinks.
+- Active XREF, CLAIM, INDX, and PROV JSON objects.
+- PROV raw text files under attachments/.
+
+Operations
+1. Copy visible draft text verbatim.
+2. Suppress {#BLOCK-###} from visible headings.
+3. Create a local bookmark for every BLOCK, XREF, QUOTE, CLAIM, and INDX.
+4. Resolve WikiLinks to local bookmarks.
+5. Derive return links from CLAIM and INDX objects referenced inside a BLOCK scope.
+6. Emit Appendix 1 (XREF + QUOTE), Appendix 2 (CLAIM), Appendix 3 (INDX), Appendix 4 (PROV).
+7. Insert a blank paragraph or page break between objects in each appendix.
+8. Emit URLs as plain text only. No live external hyperlinks.
+9. Never modify PROV raw text.
+
+Outputs
+- <draft-stem>-report-YYYYMMDD-HHMMSSZ.docx
+- <draft-stem>-annex-YYYYMMDD-HHMMSSZ.docx (only if at least one PROV has include_in_packet true)
+
+The report and the annex share the same UTC timestamp.
+Same inputs produce the same content.
+The timestamp is recorded in UTC at the moment of printing.

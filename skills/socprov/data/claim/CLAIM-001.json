@@ -1,0 +1,9 @@
+{
+  "claim_id": "001",
+  "short_title": "Program announcement date",
+  "specific_claim": "The program was announced on 9 November 2026 according to the example.com webpage.",
+  "specific_context": "No other stored extract confirms or contradicts the date.",
+  "logic": "Single extract states the date.",
+  "sources": ["XREF-001-01"],
+  "not_used": false
+}

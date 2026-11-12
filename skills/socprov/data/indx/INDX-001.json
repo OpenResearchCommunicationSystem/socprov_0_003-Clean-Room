@@ -1,0 +1,17 @@
+{
+  "indx_id": "001",
+  "short_title": "Example Program",
+  "normalized_long": "Example Program",
+  "normalized_short": "Program",
+  "search_terms": ["Example Program", "program"],
+  "index_to": ["XREF-001-01", "CLAIM-001"],
+  "properties": [
+    {
+      "label": "Announced",
+      "value": "9 November 2026",
+      "sources": ["XREF-001-01"],
+      "claims": ["CLAIM-001"]
+    }
+  ],
+  "not_used": false
+}

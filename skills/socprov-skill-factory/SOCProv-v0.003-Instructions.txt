@@ -1,0 +1,44 @@
+SOCProv 0.003 — Skill-Factory Instructions
+
+These instructions allow any modern LLM sandbox to build the system.
+
+Folder layout
+skills/socprov/
+  data/xref/     one JSON file per XREF
+  data/claim/    one JSON file per CLAIM
+  data/indx/     one JSON file per INDX
+  data/prov/     one JSON file per PROV
+  drafts/        versioned Markdown drafts
+  attachments/   PROV raw text (never modified)
+  backups/       timestamped .bak files
+  products/      form-print output
+  scripts/       form-print and validation
+skills/socprov-skill-factory/  these instructions
+skills/socprov-system/         every-turn status check
+
+Object shapes
+See skills/socprov/OBJECT-SHAPES.txt.
+BLOCK is a draft marker only. It is not a JSON object.
+
+Form-print contract
+- Zero synthesis. Draft text is copied; WikiLinks are resolved.
+- Same inputs produce the same content.
+- UTC timestamp is appended to the filename only.
+- Word (.docx) is the primary product; PDF is optional.
+- BLOCK markers are suppressed from visible headings and turned into bookmarks.
+- CLAIM and INDX return to the BLOCK that referenced them.
+- Appendix 4 contains every PROV marked include_in_packet.
+- Clear line breaks separate objects within each appendix.
+- No live external hyperlinks. URLs appear as plain text.
+- PROV raw text is never modified.
+
+Product structure
+Locked draft narrative
+Appendix 1: Extracted References
+Appendix 2: Claims
+Appendix 3: Index
+Appendix 4: Preserved Sources
+
+Prohibitions
+No analytic judgments, confidence language, source scoring, or legal characterizations.
+Foundations only.
